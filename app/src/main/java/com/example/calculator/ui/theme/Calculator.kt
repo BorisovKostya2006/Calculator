@@ -8,25 +8,40 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
 fun Calculator(modifier: Modifier = Modifier){
     Column(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Column(
             modifier = Modifier.fillMaxWidth()
-                .background(MaterialTheme.colorScheme.primaryContainer),
+                .clip(RoundedCornerShape(
+                    topEnd = 0.dp,
+                    topStart = 0.dp,
+                    bottomEnd = 40.dp,
+                    bottomStart = 40.dp
+                ))
+                .background(MaterialTheme.colorScheme.primaryContainer)
+                .weight(1f)
+                .padding(bottom = 16.dp, end = 40.dp, start=40.dp),
             verticalArrangement = Arrangement.Bottom,
-            horizontalAlignment = Alignment.End
+            horizontalAlignment = Alignment.End,
+
         ) {
             Text(
                 text = "45x8",
@@ -42,7 +57,8 @@ fun Calculator(modifier: Modifier = Modifier){
             )
         }
         Row(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Text(
                 modifier= Modifier.weight(1f),
@@ -75,10 +91,12 @@ fun Calculator(modifier: Modifier = Modifier){
             )
         }
         Row(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Box(
                 modifier =  Modifier.weight (1f)
+                    .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.secondary)
                     .aspectRatio(1f),
             contentAlignment = Alignment. Center
@@ -91,6 +109,7 @@ fun Calculator(modifier: Modifier = Modifier){
         }
             Box(
                 modifier =  Modifier.weight (1f)
+                    .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.tertiary)
                     .aspectRatio(1f),
                 contentAlignment = Alignment. Center
@@ -103,6 +122,7 @@ fun Calculator(modifier: Modifier = Modifier){
             }
             Box(
                 modifier =  Modifier.weight (1f)
+                    .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.tertiary)
                     .aspectRatio(1f),
                 contentAlignment = Alignment. Center
@@ -115,6 +135,7 @@ fun Calculator(modifier: Modifier = Modifier){
             }
             Box(
                 modifier =  Modifier.weight (1f)
+                    .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.tertiary)
                     .aspectRatio(1f),
                 contentAlignment = Alignment. Center
@@ -127,10 +148,12 @@ fun Calculator(modifier: Modifier = Modifier){
             }
         }
         Row(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Box(
                 modifier =  Modifier.weight (1f)
+                    .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.primary)
                     .aspectRatio(1f),
                 contentAlignment = Alignment. Center
@@ -143,6 +166,7 @@ fun Calculator(modifier: Modifier = Modifier){
             }
             Box(
                 modifier =  Modifier.weight (1f)
+                    .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.primary)
                     .aspectRatio(1f),
                 contentAlignment = Alignment. Center
@@ -155,6 +179,7 @@ fun Calculator(modifier: Modifier = Modifier){
             }
             Box(
                 modifier =  Modifier.weight (1f)
+                    .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.primary)
                     .aspectRatio(1f),
                 contentAlignment = Alignment. Center
@@ -167,6 +192,7 @@ fun Calculator(modifier: Modifier = Modifier){
             }
             Box(
                 modifier =  Modifier.weight (1f)
+                    .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.tertiary)
                     .aspectRatio(1f),
                 contentAlignment = Alignment. Center
@@ -179,10 +205,12 @@ fun Calculator(modifier: Modifier = Modifier){
             }
         }
         Row(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Box(
                 modifier =  Modifier.weight (1f)
+                    .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.primary)
                     .aspectRatio(1f),
                 contentAlignment = Alignment. Center
@@ -195,6 +223,7 @@ fun Calculator(modifier: Modifier = Modifier){
             }
             Box(
                 modifier =  Modifier.weight (1f)
+                    .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.primary)
                     .aspectRatio(1f),
                 contentAlignment = Alignment. Center
@@ -207,6 +236,7 @@ fun Calculator(modifier: Modifier = Modifier){
             }
             Box(
                 modifier =  Modifier.weight (1f)
+                    .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.primary)
                     .aspectRatio(1f),
                 contentAlignment = Alignment. Center
@@ -219,6 +249,7 @@ fun Calculator(modifier: Modifier = Modifier){
             }
             Box(
                 modifier =  Modifier.weight (1f)
+                    .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.tertiary)
                     .aspectRatio(1f),
                 contentAlignment = Alignment. Center
@@ -231,10 +262,12 @@ fun Calculator(modifier: Modifier = Modifier){
             }
         }
         Row(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Box(
                 modifier =  Modifier.weight (1f)
+                    .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.primary)
                     .aspectRatio(1f),
                 contentAlignment = Alignment. Center
@@ -247,6 +280,7 @@ fun Calculator(modifier: Modifier = Modifier){
             }
             Box(
                 modifier =  Modifier.weight (1f)
+                    .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.primary)
                     .aspectRatio(1f),
                 contentAlignment = Alignment. Center
@@ -259,6 +293,7 @@ fun Calculator(modifier: Modifier = Modifier){
             }
             Box(
                 modifier =  Modifier.weight (1f)
+                    .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.primary)
                     .aspectRatio(1f),
                 contentAlignment = Alignment. Center
@@ -271,6 +306,7 @@ fun Calculator(modifier: Modifier = Modifier){
             }
             Box(
                 modifier =  Modifier.weight (1f)
+                    .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.tertiary)
                     .aspectRatio(1f),
                 contentAlignment = Alignment. Center
@@ -283,10 +319,12 @@ fun Calculator(modifier: Modifier = Modifier){
             }
         }
         Row(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Box(
                 modifier =  Modifier.weight (2f)
+                    .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.primary)
                     .aspectRatio(2f),
                 contentAlignment = Alignment. Center
@@ -299,7 +337,8 @@ fun Calculator(modifier: Modifier = Modifier){
             }
             Box(
                 modifier =  Modifier.weight (1f)
-                    .background (MaterialTheme.colorScheme.tertiary)
+                    .clip(CircleShape)
+                    .background (MaterialTheme.colorScheme.primary)
                     .aspectRatio(1f),
                 contentAlignment = Alignment. Center
             ) {
@@ -311,6 +350,7 @@ fun Calculator(modifier: Modifier = Modifier){
             }
             Box(
                 modifier =  Modifier.weight (1f)
+                    .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.tertiary)
                     .aspectRatio(1f),
                 contentAlignment = Alignment. Center
