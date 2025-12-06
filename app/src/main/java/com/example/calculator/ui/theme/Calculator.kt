@@ -16,7 +16,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,11 +24,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.calculator.CalculatorViewModel
 
-var multiply = mutableStateOf("45x8")
-var result = mutableStateOf("360")
+val viewModel = CalculatorViewModel()
 @Composable
 fun Calculator(modifier: Modifier = Modifier){
+    val state = viewModel.state.value
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -50,13 +50,13 @@ fun Calculator(modifier: Modifier = Modifier){
 
         ) {
             Text(
-                text = multiply.value,
+                text = state.calculations,
                 fontSize = 36.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = MaterialTheme.colorScheme.onPrimaryContainer
             )
             Text(
-                text = result.value,
+                text = state.result,
                 fontSize = 17.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = MaterialTheme.colorScheme.onSecondaryContainer
@@ -104,8 +104,8 @@ fun Calculator(modifier: Modifier = Modifier){
                 modifier =  Modifier.weight (1f)
                     .clickable{
                         Log.d("clickable","clickable AC")
-                        multiply.value = ""
-                        result.value = ""
+                        viewModel.processInputUser("AC")
+
                     }
                     .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.secondary)
