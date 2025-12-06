@@ -24,7 +24,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.calculator.CalculatorCommand
 import com.example.calculator.CalculatorViewModel
+import com.example.calculator.Symbol
 
 val viewModel = CalculatorViewModel()
 @Composable
@@ -67,7 +69,10 @@ fun Calculator(modifier: Modifier = Modifier){
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Text(
-                modifier= Modifier.weight(1f),
+                modifier= Modifier.weight(1f)
+                    .clickable{
+                        viewModel.processCommand(CalculatorCommand.Input(Symbol.SQRT))
+                    },
                 text = "√",
                 fontSize = 30.sp,
                 fontWeight = FontWeight.SemiBold,
@@ -75,21 +80,28 @@ fun Calculator(modifier: Modifier = Modifier){
             )
 
             Text(
-                modifier= Modifier.weight(1f),
+                modifier= Modifier.weight(1f).clickable{
+                    viewModel.processCommand(CalculatorCommand.Input(Symbol.PI))
+                },
                 text = "π",
                 fontSize = 30.sp,
                 fontWeight = FontWeight.SemiBold,
                 textAlign = TextAlign.Center
             )
             Text(
-                modifier= Modifier.weight(1f),
+                modifier= Modifier.weight(1f).clickable{
+                    viewModel.processCommand(CalculatorCommand.Input(Symbol.POWER))
+                },
                 text = "^",
                 fontSize = 30.sp,
                 fontWeight = FontWeight.SemiBold,
                 textAlign = TextAlign.Center
             )
             Text(
-                modifier= Modifier.weight(1f),
+                modifier= Modifier.weight(1f)
+                    .clickable{
+                        viewModel.processCommand(CalculatorCommand.Input(Symbol.FACTORIAL))
+                    },
                 text = "!",
                 fontSize = 30.sp,
                 fontWeight = FontWeight.SemiBold,
@@ -104,7 +116,7 @@ fun Calculator(modifier: Modifier = Modifier){
                 modifier =  Modifier.weight (1f)
                     .clickable{
                         Log.d("clickable","clickable AC")
-                        viewModel.processInputUser("AC")
+                        viewModel.processCommand(CalculatorCommand.Clear)
 
                     }
                     .clip(CircleShape)
@@ -119,7 +131,9 @@ fun Calculator(modifier: Modifier = Modifier){
             )
         }
             Box(
-                modifier =  Modifier.weight (1f)
+                modifier =  Modifier.weight (1f).clickable{
+                    viewModel.processCommand(CalculatorCommand.Input(Symbol.PARENTHESIS))
+                }
                     .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.tertiary)
                     .aspectRatio(1f),
@@ -133,6 +147,9 @@ fun Calculator(modifier: Modifier = Modifier){
             }
             Box(
                 modifier =  Modifier.weight (1f)
+                    .clickable{
+                        viewModel.processCommand(CalculatorCommand.Input(Symbol.PERCENT))
+                    }
                     .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.tertiary)
                     .aspectRatio(1f),
@@ -145,7 +162,9 @@ fun Calculator(modifier: Modifier = Modifier){
                 )
             }
             Box(
-                modifier =  Modifier.weight (1f)
+                modifier =  Modifier.weight (1f).clickable{
+                    viewModel.processCommand(CalculatorCommand.Input(Symbol.DIVIDE))
+                }
                     .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.tertiary)
                     .aspectRatio(1f),
@@ -163,7 +182,9 @@ fun Calculator(modifier: Modifier = Modifier){
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Box(
-                modifier =  Modifier.weight (1f)
+                modifier =  Modifier.weight (1f).clickable{
+                    viewModel.processCommand(CalculatorCommand.Input(Symbol.DIGIT_7))
+                }
                     .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.primary)
                     .aspectRatio(1f),
@@ -176,7 +197,9 @@ fun Calculator(modifier: Modifier = Modifier){
                 )
             }
             Box(
-                modifier =  Modifier.weight (1f)
+                modifier =  Modifier.weight (1f).clickable{
+                    viewModel.processCommand(CalculatorCommand.Input(Symbol.DIGIT_8))
+                }
                     .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.primary)
                     .aspectRatio(1f),
@@ -189,7 +212,9 @@ fun Calculator(modifier: Modifier = Modifier){
                 )
             }
             Box(
-                modifier =  Modifier.weight (1f)
+                modifier =  Modifier.weight (1f).clickable{
+                    viewModel.processCommand(CalculatorCommand.Input(Symbol.DIGIT_9))
+                }
                     .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.primary)
                     .aspectRatio(1f),
@@ -202,7 +227,9 @@ fun Calculator(modifier: Modifier = Modifier){
                 )
             }
             Box(
-                modifier =  Modifier.weight (1f)
+                modifier =  Modifier.weight (1f).clickable{
+                    viewModel.processCommand(CalculatorCommand.Input(Symbol.MULTIPLY))
+                }
                     .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.tertiary)
                     .aspectRatio(1f),
@@ -220,7 +247,9 @@ fun Calculator(modifier: Modifier = Modifier){
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Box(
-                modifier =  Modifier.weight (1f)
+                modifier =  Modifier.weight (1f).clickable{
+                    viewModel.processCommand(CalculatorCommand.Input(Symbol.DIGIT_4))
+                }
                     .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.primary)
                     .aspectRatio(1f),
@@ -233,7 +262,9 @@ fun Calculator(modifier: Modifier = Modifier){
                 )
             }
             Box(
-                modifier =  Modifier.weight (1f)
+                modifier =  Modifier.weight (1f).clickable{
+                    viewModel.processCommand(CalculatorCommand.Input(Symbol.DIGIT_5))
+                }
                     .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.primary)
                     .aspectRatio(1f),
@@ -246,7 +277,9 @@ fun Calculator(modifier: Modifier = Modifier){
                 )
             }
             Box(
-                modifier =  Modifier.weight (1f)
+                modifier =  Modifier.weight (1f).clickable{
+                    viewModel.processCommand(CalculatorCommand.Input(Symbol.DIGIT_6))
+                }
                     .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.primary)
                     .aspectRatio(1f),
@@ -259,7 +292,9 @@ fun Calculator(modifier: Modifier = Modifier){
                 )
             }
             Box(
-                modifier =  Modifier.weight (1f)
+                modifier =  Modifier.weight (1f).clickable{
+                    viewModel.processCommand(CalculatorCommand.Input(Symbol.SUBTRACT))
+                }
                     .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.tertiary)
                     .aspectRatio(1f),
@@ -277,7 +312,9 @@ fun Calculator(modifier: Modifier = Modifier){
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Box(
-                modifier =  Modifier.weight (1f)
+                modifier =  Modifier.weight (1f).clickable{
+                    viewModel.processCommand(CalculatorCommand.Input(Symbol.DIGIT_1))
+                }
                     .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.primary)
                     .aspectRatio(1f),
@@ -290,7 +327,9 @@ fun Calculator(modifier: Modifier = Modifier){
                 )
             }
             Box(
-                modifier =  Modifier.weight (1f)
+                modifier =  Modifier.weight (1f).clickable{
+                    viewModel.processCommand(CalculatorCommand.Input(Symbol.DIGIT_2))
+                }
                     .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.primary)
                     .aspectRatio(1f),
@@ -303,7 +342,9 @@ fun Calculator(modifier: Modifier = Modifier){
                 )
             }
             Box(
-                modifier =  Modifier.weight (1f)
+                modifier =  Modifier.weight (1f).clickable{
+                    viewModel.processCommand(CalculatorCommand.Input(Symbol.DIGIT_3))
+                }
                     .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.primary)
                     .aspectRatio(1f),
@@ -316,7 +357,9 @@ fun Calculator(modifier: Modifier = Modifier){
                 )
             }
             Box(
-                modifier =  Modifier.weight (1f)
+                modifier =  Modifier.weight (1f).clickable{
+                    viewModel.processCommand(CalculatorCommand.Input(Symbol.ADD))
+                }
                     .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.tertiary)
                     .aspectRatio(1f),
@@ -334,7 +377,9 @@ fun Calculator(modifier: Modifier = Modifier){
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Box(
-                modifier =  Modifier.weight (2f)
+                modifier =  Modifier.weight (2f).clickable{
+                    viewModel.processCommand(CalculatorCommand.Input(Symbol.DIGIT_0))
+                }
                     .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.primary)
                     .aspectRatio(2f),
@@ -347,7 +392,9 @@ fun Calculator(modifier: Modifier = Modifier){
                 )
             }
             Box(
-                modifier =  Modifier.weight (1f)
+                modifier =  Modifier.weight (1f).clickable{
+                    viewModel.processCommand(CalculatorCommand.Input(Symbol.DOT))
+                }
                     .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.primary)
                     .aspectRatio(1f),
@@ -361,6 +408,9 @@ fun Calculator(modifier: Modifier = Modifier){
             }
             Box(
                 modifier =  Modifier.weight (1f)
+                    .clickable{
+                        viewModel.processCommand(CalculatorCommand.Evaluate)
+                    }
                     .clip(CircleShape)
                     .background (MaterialTheme.colorScheme.tertiary)
                     .aspectRatio(1f),
