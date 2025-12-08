@@ -1,10 +1,13 @@
 package com.example.calculator
 
 import android.util.Log
+import androidx.annotation.Nullable
+import androidx.compose.foundation.interaction.DragInteraction
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import org.mariuszgromada.math.mxparser.Expression
 import kotlin.random.Random
 
 
@@ -22,16 +25,18 @@ class CalculatorViewModel : ViewModel() {
                 _state.value =  CalculatorState.Initial
             }
             CalculatorCommand.Evaluate -> {
-                val isError = Random.nextBoolean()
-                if (!isError){
-                    _state.value = CalculatorState.Success(
-                        result = "100"
+                val result = evaluate()
+                if (result == "NaN"){
+                    _state.value = CalculatorState.Error(
+                        expression = expression
                     )
                 }else{
-                    _state.value = CalculatorState.Error(
-                        expression = "100/0"
+                    _state.value = CalculatorState.Success(
+                        result = result
                     )
                 }
+
+
             }
             is CalculatorCommand.Input -> {
                 val symbol = if (command.symbol != Symbol.PARENTHESIS) {
@@ -39,13 +44,25 @@ class CalculatorViewModel : ViewModel() {
                 }else{
                      getCorrectParenthesis()
                 }
+                val result  = evaluate()
                 expression += symbol
                 _state.value = CalculatorState.Input(
                     expression = expression,
-                    result = ""
+                    result = if(result == "NaN") {
+                        ""
+                    }else{
+                        result
+                    }
                 )
             }
         }
+    }
+
+    private fun evaluate() : String{
+        val expressionStr = expression.replace('x', '*')
+            .replace(',','.')
+        val answer = Expression(expressionStr).calculate().toString()
+        return answer
     }
 //    fun  processInputUser(name : String){
 //        if(name == "AC"){
